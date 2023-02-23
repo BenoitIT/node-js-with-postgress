@@ -29,12 +29,7 @@ export const readOne = async (req, res) => {
           id: req.params.id
         }
       });
-      const posts=await Post.findOne({
-        where: {
-          user_id: req.params.id
-      }
-    });
-      res.status(200).json({user,posts});
+      res.status(200).json({user});
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: 'Server Error' });

@@ -48,14 +48,8 @@ const readOne = async (req, res) => {
         id: req.params.id
       }
     });
-    const posts = await _models.Post.findOne({
-      where: {
-        user_id: req.params.id
-      }
-    });
     res.status(200).json({
-      user,
-      posts
+      user
     });
   } catch (err) {
     console.error(err);

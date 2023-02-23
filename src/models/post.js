@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       Post.belongsTo(models.User, { foreignKey: 'user_id' });
     }
   }
+  
   Post.init({
     title: {
       type: DataTypes.STRING,

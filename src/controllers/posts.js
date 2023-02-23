@@ -21,6 +21,20 @@ export const viewPost = async (req, res) => {
       res.status(500).json({ message: 'Server Error' });
     }
   };
+  // view post with a coresponding username
+  export const viewPostByUsername = async (req, res) => {
+    try {
+      const post = await Post.findAll({
+        where: {
+          user_id: req.params.id
+        }
+      });
+      res.status(200).json(post);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Server Error' });
+    }
+  };
   // read a all Posts
   export const readOnePost = async (req, res) => {
     try {

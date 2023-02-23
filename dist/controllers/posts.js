@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.viewPost = exports.readOnePost = exports.createPost = void 0;
+exports.viewPostByUsername = exports.viewPost = exports.readOnePost = exports.createPost = void 0;
 var _models = require("../models");
 // create a new user
 const createPost = async (req, res) => {
@@ -39,8 +39,25 @@ const viewPost = async (req, res) => {
     });
   }
 };
-// read a all Posts
+// view post with a coresponding username
 exports.viewPost = viewPost;
+const viewPostByUsername = async (req, res) => {
+  try {
+    const post = await _models.Post.findAll({
+      where: {
+        user_id: req.params.id
+      }
+    });
+    res.status(200).json(post);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      message: 'Server Error'
+    });
+  }
+};
+// read a all Posts
+exports.viewPostByUsername = viewPostByUsername;
 const readOnePost = async (req, res) => {
   try {
     const post = await _models.Post.findOne({
