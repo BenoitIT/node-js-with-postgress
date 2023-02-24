@@ -2,7 +2,7 @@
   "development": {
     "username": "denisniwemugisha",
     "password": null,
-    "database": "newdb",
+    "database": "revision",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

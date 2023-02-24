@@ -1,9 +1,15 @@
 import { Post } from'../models';
-
+import { User } from'../models';
 // create a new user
 export const createPost = async (req, res) => {
   try {
     const { title, description, user_id } = req.body;
+ const user= await User.findOne({
+  where:{
+    id: user_id
+  }
+ })
+ if(!user) return res.status(201).json({message: 'no user with id ' + user_id});
     const post = await Post.create({ title, description, user_id});
     res.status(201).json(post);
   } catch (err) {

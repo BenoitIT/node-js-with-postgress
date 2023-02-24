@@ -68,6 +68,11 @@ const deleteUser = async (req, res) => {
       }
     });
     if (user) {
+      await _models.Post.destroy({
+        where: {
+          user_id: user.id
+        }
+      });
       await user.destroy();
       res.status(200).json({
         message: 'User deleted successfully'
