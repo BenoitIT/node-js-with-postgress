@@ -1,0 +1,6 @@
+app:
+  build:
+    script: npm run build
+    output_dir: dist
+  web:
+    public_dir: dist

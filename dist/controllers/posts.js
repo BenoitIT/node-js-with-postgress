@@ -13,6 +13,14 @@ const createPost = async (req, res) => {
       description,
       user_id
     } = req.body;
+    const user = await _models.User.findOne({
+      where: {
+        id: user_id
+      }
+    });
+    if (!user) return res.status(201).json({
+      message: 'no user with id ' + user_id
+    });
     const post = await _models.Post.create({
       title,
       description,
