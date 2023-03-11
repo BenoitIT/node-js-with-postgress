@@ -4,6 +4,9 @@ import {createUser,viewUser,readOne,deleteUser,updateUser} from './controllers/u
 import {createComment,readOneComment,viewCommentsByPost} from './controllers/comments.';
 const app = express();
 app.use(express.json());
+app.get('/',(req,res)=>{
+    res.json({message:'app opned'})
+})
 app.post('/api/users/newuser',createUser);
 app.get('/api/users/all',viewUser);
 app.get('/api/users/:id',readOne);
